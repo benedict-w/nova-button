@@ -130,6 +130,9 @@ export default {
       if (this.field.type === 'route') {
         const r = this.field.route;
         const base = `${Nova.appConfig.base}/resources/`;
+        if (base == '/' && path.startsWith('/')) {
+          base = '';
+        }
         if (r.name === 'lens') {
           Inertia.visit(`${base}${r.params.resourceName}/${r.name}/${r.params.lens}`);
         } else if (r.name === 'index') {
